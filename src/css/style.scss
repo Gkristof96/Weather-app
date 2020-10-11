@@ -202,6 +202,16 @@ header {
     }
   }
 }
+.error {
+  width: 500px;
+  height: 50px;
+  text-align: center;
+  &__title {
+    text-align: center;
+    color: red;
+    margin-bottom: 10px;
+  }
+}
 
 @media (max-width: 500px) {
   header {

@@ -1,7 +1,7 @@
 import React from "react";
 import { FaSearch } from "react-icons/fa";
 
-const Search = ({ setInput, input, handleSearch }) => {
+const Search = ({ setInput, input, handleSearch, setApiError}) => {
   return (
     <>
       <div className="search">
@@ -12,6 +12,10 @@ const Search = ({ setInput, input, handleSearch }) => {
             className="field"
             type="text"
             placeholder="Type city..."
+            onClick={() => {
+              setInput('')
+              setApiError(false)
+            }}
             onChange={(e) => setInput(e.target.value)}
           />
         </div>

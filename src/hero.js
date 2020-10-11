@@ -2,7 +2,7 @@ import React from "react";
 import Search from "./search";
 import { BsArrowBarDown } from "react-icons/bs";
 
-const Hero = ({ input, setInput, open, handleSearch, handleClose }) => {
+const Hero = ({ input, setInput, open, handleSearch, handleClose, setApiError }) => {
   let heroClass = "hero";
   if (!open) {
     heroClass = "hero open";
@@ -14,6 +14,7 @@ const Hero = ({ input, setInput, open, handleSearch, handleClose }) => {
           <Search
             input={input}
             setInput={setInput}
+            setApiError={setApiError}
             handleSearch={handleSearch}
           />
         </div>
