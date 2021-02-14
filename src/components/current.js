@@ -7,13 +7,11 @@ import {
   WiHorizonAlt,
   WiHorizon,
 } from "react-icons/wi";
-import ErrorCard from './errorcard'
 
-const Current = ({ weather, error }) => {
+const Current = ({ weather}) => {
   return (
     <>
-      <div className="weather-card">
-        {error ? <ErrorCard /> : <div className="weather-card__current">
+        <div className="weather-card">
           <div className="header">
             <h1>
               <FaMapMarkerAlt />
@@ -45,15 +43,15 @@ const Current = ({ weather, error }) => {
                 <ul>
                   <li>
                     <WiHumidity size="40" />
-                    {weather.main.humidity}
+                    {`${weather.main.humidity} %`}
                   </li>
                   <li>
                     <WiBarometer size="40" />
-                    {weather.main.pressure}
+                    {`${weather.main.pressure} hpa`}
                   </li>
                   <li>
                     <WiWindy size="40" />
-                    {weather.wind.speed}
+                    {`${weather.wind.speed} km/h`}
                   </li>
                   <li>
                     <WiHorizonAlt size="40" />
@@ -67,7 +65,6 @@ const Current = ({ weather, error }) => {
               </div>
             )}
           </div>
-        </div>}
       </div>
     </>
   );

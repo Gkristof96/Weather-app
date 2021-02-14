@@ -1,0 +1,24 @@
+.weather {
+    transition: 0.5s ease-in-out;
+    border-top: 0.25vh solid #071a52;
+    width: 100%;
+    height: 49.75vh;
+    background: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    .content-card {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+}
+
+@media (max-width: 500px) {
+    .weather {
+        min-height: 50vh;
+        height: auto;
+    }
+}

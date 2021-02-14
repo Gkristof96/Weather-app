@@ -16,6 +16,7 @@ const Hero = ({ input, setInput, open, handleSearch, handleClose, setApiError })
             setInput={setInput}
             setApiError={setApiError}
             handleSearch={handleSearch}
+            handleClose={handleClose}
           />
         </div>
         <div className="close-btn">

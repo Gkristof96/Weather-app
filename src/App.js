@@ -1,8 +1,8 @@
 import React, { useState} from "react";
 import "./css/style.css";
-import Header from "./header";
-import Hero from "./hero";
-import Weather from "./weather";
+import Header from './components/header'
+import Hero from './components/hero'
+import Weather from './components/weather'
 import axios from 'axios';
 
 const URL = "https://api.openweathermap.org/data/2.5/weather";
