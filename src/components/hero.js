@@ -2,25 +2,26 @@ import React from "react";
 import Search from "./search";
 import { BsArrowBarDown } from "react-icons/bs";
 
-const Hero = ({ input, setInput, open, handleSearch, handleClose, setApiError }) => {
-  let heroClass = "hero";
-  if (!open) {
-    heroClass = "hero open";
-  }
+const Hero = ({
+  searchInput,
+  setSearchInput,
+  isWeatherDisplay,
+  handleSearch,
+  hideWeatherDisplay,
+}) => {
   return (
     <>
-      <section className={heroClass}>
+      <section className={`hero ${isWeatherDisplay && "open"}`}>
         <div className="container">
           <Search
-            input={input}
-            setInput={setInput}
-            setApiError={setApiError}
+            searchInput={searchInput}
+            setSearchInput={setSearchInput}
             handleSearch={handleSearch}
-            handleClose={handleClose}
+            hideWeatherDisplay={hideWeatherDisplay}
           />
         </div>
         <div className="close-btn">
-          <BsArrowBarDown size="25" onClick={() => handleClose()} />
+          <BsArrowBarDown size="25" onClick={() => hideWeatherDisplay()} />
         </div>
       </section>
     </>

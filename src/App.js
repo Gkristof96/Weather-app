@@ -1,56 +1,59 @@
-import React, { useState} from "react";
+import React, { useState } from "react";
 import "./css/style.css";
-import Header from './components/header'
-import Hero from './components/hero'
-import Weather from './components/weather'
-import axios from 'axios';
+import Header from "./components/header";
+import Hero from "./components/hero";
+import Weather from "./components/weather";
+import axios from "axios";
 
 const URL = "https://api.openweathermap.org/data/2.5/weather";
 const API_KEY = "a21017d2f65b7002114cca6406d749df";
 
 function App() {
-  const [weatherHidden, setWeatherHidden] = useState(true);
-  const [input, setInput] = useState("");
-  const [weather, setWeather] = useState({});
-  const [loading, setLoading] = useState(true);
-  const [apiError, setApiError] = useState(false)
+  const [isWeatherDisplay, setWeatherDisplay] = useState(false);
+  const [searchInput, setSearchInput] = useState("");
+  const [weatherData, setWeatherData] = useState({});
+  const [isLoading, setLoading] = useState(true);
+  const [fetchError, setFetchError] = useState("");
 
   const handleSearch = async () => {
-    if (input.length > 0) {
-      setWeatherHidden(false);
-      await axios.get(URL, {
-        params: {
-          q: input,
-          units: "metric",
-          APPID: API_KEY,
-        },
-      })
-      .then((response) => { 
-        setWeather(response.data)
-        setLoading(false)
-      })
-      .catch((error) => setApiError(true));
+    if (searchInput.length > 0) {
+      setFetchError("");
+      setWeatherDisplay(true);
+      await axios
+        .get(URL, {
+          params: {
+            q: searchInput,
+            units: "metric",
+            APPID: API_KEY,
+          },
+        })
+        .then((response) => {
+          setWeatherData(response.data);
+          setLoading(false);
+        })
+        .catch((error) => {
+          setFetchError("404 Nem található adat!");
+        });
     }
   };
-  const handleClose = () => {
-    setWeatherHidden(true);
+  const hideWeatherDisplay = () => {
+    setWeatherDisplay(false);
   };
   return (
     <div className="App">
       <Header />
       <Hero
-        input={input}
-        setInput={setInput}
-        open={weatherHidden}
-        setApiError={setApiError}
+        searchInput={searchInput}
+        setSearchInput={setSearchInput}
+        isWeatherDisplay={isWeatherDisplay}
         handleSearch={handleSearch}
-        handleClose={handleClose}
+        hideWeatherDisplay={hideWeatherDisplay}
       />
       <Weather
-        loading={loading}
-        weather={weather}
-        error={apiError}
-        weatherHidden={weatherHidden}
+        isLoading={isLoading}
+        weatherData={weatherData}
+        fetchError={fetchError}
+        isWeatherDisplay={isWeatherDisplay}
       />
     </div>
   );

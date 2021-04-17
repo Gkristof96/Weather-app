@@ -1,13 +1,17 @@
-import React from 'react'
-import ErrorCard from './errorcard'
-import Current from './current'
+import React from "react";
+import ErrorCard from "./errorcard";
+import Current from "./current";
 
-const ContentCard = ({ weather, error}) => {
-    return (
-        <>
-            {error ? <ErrorCard /> : <Current weather={weather} />}
-        </>
-    )
-}
+const ContentCard = ({ weatherData, fetchError }) => {
+  return (
+    <>
+      {fetchError.length > 0 ? (
+        <ErrorCard fetchError={fetchError} />
+      ) : (
+        <Current weather={weatherData} />
+      )}
+    </>
+  );
+};
 
-export default ContentCard
+export default ContentCard;

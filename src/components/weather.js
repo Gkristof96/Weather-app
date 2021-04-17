@@ -1,13 +1,17 @@
 import React from "react";
-import ContentCard from './content-card'
-import Loading from './loading'
+import ContentCard from "./content-card";
+import Loading from "./loading";
 
-const Weather = ({ weatherHidden, weather, loading, error }) => {
+const Weather = ({ isWeatherDisplay, weatherData, isLoading, fetchError }) => {
   return (
     <>
-      {weatherHidden ? null : (
+      {isWeatherDisplay && (
         <section className="weather">
-            {loading ? <Loading /> : <ContentCard weather={weather} error={error} />}
+          {isLoading ? (
+            <Loading />
+          ) : (
+            <ContentCard weatherData={weatherData} fetchError={fetchError} />
+          )}
         </section>
       )}
     </>
